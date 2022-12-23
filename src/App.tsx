@@ -7,7 +7,6 @@ import ShoppingAssistantPage from './page/ShoppingAssistantPage';
 function App() {
   return (
     <div className='App'>
-      <ShoppingAssistantPage />
       <Routes>
         <Route path='/' element={<ShoppingAssistantPage />} />
         <Route path='/register' element={<RegisterPage />} />

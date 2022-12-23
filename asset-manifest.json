@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/shopping-assistant/static/css/main.073c9b0a.css",
+    "main.js": "/shopping-assistant/static/js/main.f35f038e.js",
+    "static/js/787.6bf11ce6.chunk.js": "/shopping-assistant/static/js/787.6bf11ce6.chunk.js",
+    "static/media/logo.svg": "/shopping-assistant/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/shopping-assistant/index.html",
+    "main.073c9b0a.css.map": "/shopping-assistant/static/css/main.073c9b0a.css.map",
+    "main.f35f038e.js.map": "/shopping-assistant/static/js/main.f35f038e.js.map",
+    "787.6bf11ce6.chunk.js.map": "/shopping-assistant/static/js/787.6bf11ce6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.f35f038e.js"
+  ]
+}

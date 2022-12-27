@@ -7,10 +7,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { registerSchema } from '../../models/form/registerSchema';
 import TextLink from '../components/TextLink';
 import './Register.css';
-import { PostApi } from '../../service/api/CallApi';
+import { CallApi } from '../../service/api/CallApi';
 
 const Register = () => {
-  const [error, errorSet] = useState('');
+  const [errorMessage, errorMessageSet] = useState('');
   const {
     handleSubmit,
     register,
@@ -22,26 +22,27 @@ const Register = () => {
 
   const onSubmit = (data: any) => {
     console.log(data);
-    PostApi(
+    CallApi<any>(
       'user',
+      'POST',
       {
         username: data.username,
         email: data.email,
         password: data.password,
       },
       res => {
-        console.log(res);
-        reset({
-          username: '',
-          email: '',
-          password: '',
-          confirmPassword: '',
-        });
-        errorSet('');
+        if (res.status === 200) {
+          reset({
+            username: '',
+            email: '',
+            password: '',
+            confirmPassword: '',
+          });
+        }
+        errorMessageSet(res.error);
       },
       err => {
         console.error(err);
-        // errorSet(err);
       }
     );
   };
@@ -50,7 +51,7 @@ const Register = () => {
     <div className='register-form'>
       <Form
         title='register'
-        error={error}
+        error={errorMessage}
         detail='Join us for free!'
         submit={handleSubmit(onSubmit)}>
         <Input

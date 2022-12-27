@@ -8,7 +8,7 @@ const Form = ({ title, detail, error, submit, children }: formType) => {
         <h1>{title}</h1>
         <h4>{detail}</h4>
       </div>
-      <span>{error}</span>
+      {error ? <span>{error}</span> : null}
       <form onSubmit={submit}>{children}</form>
     </div>
   );

@@ -1,6 +1,7 @@
+import Login from '../app/Login/Login';
+
 const LoginPage = () => {
-  return <div></div>;
-  // return <Login />;
+  return <Login />;
 };
 
 export default LoginPage;

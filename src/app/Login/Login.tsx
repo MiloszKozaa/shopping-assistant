@@ -1,17 +1,31 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useMutation, useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
-import { TokenModel } from '../../models/auth/TokenModel';
+import Button from '../../components/Button';
+import Input from '../../components/Input';
 import { loginSchema } from '../../models/form/loginSchema';
-import { CallApi } from '../../service/api/CallApi';
-import Button from '../components/Button';
+import { userModel } from '../../models/user/userModel';
+import { CallApi, GetApi } from '../../service/api/CallApi';
 import Form from '../components/Form';
-import Input from '../components/Input';
 import TextLink from '../components/TextLink';
 import './Login.css';
 
+type loginType = {
+  email: string;
+  password: string;
+};
+
 const Login = () => {
+  const [errorMessage, errorMessageSet] = useState('');
+  const navigate = useNavigate();
+
+  const { mutate, data, status } = useMutation({
+    mutationKey: ['user'],
+    mutationFn: (body: loginType) => CallApi('user/login', 'POST', body),
+  });
+
   const {
     handleSubmit,
     register,
@@ -19,28 +33,20 @@ const Login = () => {
   } = useForm({
     resolver: yupResolver(loginSchema),
   });
-  const [errorMessage, errorMessageSet] = useState('');
-  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (data) {
+      if (status === 'success' && data.status === 200) {
+        console.log('Navigating to home');
+        navigate('/home');
+      }
+      errorMessageSet(data.error);
+    }
+  }, [data]);
 
   const onSubmit = (data: any) => {
-    CallApi<TokenModel>(
-      'user/login',
-      'POST',
-      {
-        email: data.email,
-        password: data.password,
-      },
-      res => {
-        if (res.status === 200) {
-          localStorage.setItem('x-auth-token', res.data.token);
-        }
-        errorMessageSet(res.error);
-        navigate('/');
-      },
-      err => {
-        console.error(err);
-      }
-    );
+    console.log(data);
+    mutate(data);
   };
 
   return (
@@ -54,7 +60,6 @@ const Login = () => {
           id='email'
           label='email'
           type='email'
-          placeholder='Enter email'
           error={errors.email?.message}
           yup={{ ...register('email') }}
         />
@@ -62,7 +67,6 @@ const Login = () => {
           id='password'
           label='password'
           type='password'
-          placeholder='Enter password'
           error={errors.password?.message}
           yup={{ ...register('password') }}
         />

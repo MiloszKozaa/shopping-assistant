@@ -1,0 +1,70 @@
+.input-wrapper,
+.input-wrapper-error {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  transition: 0.3s;
+}
+
+.input-wrapper > div,
+.input-wrapper-error > div {
+  display: flex;
+  z-index: 10;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 10px;
+  color: #505050;
+  font-weight: 600;
+  background-color: #252525;
+  padding: 0 10px;
+  margin: 0 0 -7px 10px;
+  /* transform: translateY(22px); */
+}
+
+.input-wrapper-error > div {
+  color: tomato;
+}
+
+.input-error,
+.input-empty-error {
+  display: flex;
+  padding: 5px 10px;
+  height: 10px;
+  font-size: 11px;
+  font-weight: 400;
+  color: tomato;
+  transition: 0.3s;
+}
+
+.input-empty-error {
+  background-color: #252525;
+  transition: 0.2s;
+}
+
+.input-wrapper > input,
+.input-wrapper-error > input {
+  display: flex;
+  z-index: 9;
+  outline: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  border: 2px #505050 solid;
+  border-radius: 5px;
+  height: 40px;
+  color: #fff;
+  padding: 0 15px;
+  width: min(100vw - 80px, 400px);
+}
+
+.input-wrapper-error > input {
+  border: 2px tomato solid;
+  color: tomato;
+}
+
+:-webkit-autofill,
+:-webkit-autofill:hover,
+:-webkit-autofill:focus {
+  box-shadow: 0 0 0px 1000px #252525 inset;
+  -webkit-text-fill-color: #fff;
+}

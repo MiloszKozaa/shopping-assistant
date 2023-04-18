@@ -1,0 +1,56 @@
+.ShoppingList-wrapper {
+  display: flex;
+  align-items: left;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #2d2d2d;
+  height: 80px;
+  width: min(100vw - 80px, 400px);
+  padding: 0 15px;
+  font-size: 18px;
+  border-radius: 10px;
+  gap: 7px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.ShoppingList-wrapper:hover {
+  background-color: #262626;
+  transition: 0.3s;
+}
+
+.ShoppingList-header {
+  display: flex;
+  align-items: center;
+}
+
+.ShoppingList-name {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: 600;
+}
+
+.ShoppingList-header > span {
+  display: flex;
+  width: 2px;
+  height: 15px;
+  margin: 0 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  opacity: 70%;
+}
+
+.ShoppingList-date {
+  opacity: 70%;
+  font-weight: 400;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ShoppingList-productsNumber {
+  font-size: 13px;
+  font-weight: 700;
+  opacity: 70%;
+}

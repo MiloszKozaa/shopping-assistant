@@ -1,5 +1,12 @@
-import { formType } from '../../types/FormType';
 import './Form.css';
+
+type formType = {
+  title: string;
+  detail: string;
+  error?: string;
+  submit: (data: any) => void;
+  children: React.ReactNode;
+};
 
 const Form = ({ title, detail, error, submit, children }: formType) => {
   return (

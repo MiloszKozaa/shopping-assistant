@@ -7,7 +7,7 @@
 }
 
 .form-wrapper {
-  gap: 30px;
+  gap: 40px;
 }
 
 .form-wrapper > div > h1 {
@@ -28,7 +28,8 @@
 .form-wrapper > form {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  align-items: center;
+  gap: 20px;
 }
 
 .form-wrapper > span {
@@ -36,4 +37,5 @@
   padding: 15px 30px;
   background-color: #ff6347;
   border: 2px #dc452a solid;
+  border-radius: 5px;
 }

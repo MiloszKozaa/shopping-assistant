@@ -1,5 +1,9 @@
-import { ButtonType } from '../../types/ButtonType';
 import './Button.css';
+
+type ButtonType = {
+  name: string;
+  click?: () => void;
+};
 
 const Button = ({ click, name }: ButtonType) => {
   return (
